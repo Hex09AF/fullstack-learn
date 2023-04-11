@@ -1,0 +1,25 @@
+html,
+body {
+	@apply h-full overflow-hidden;
+}
+
+:root {
+	--theme-rounded-container: theme(borderRadius.sm);
+	--theme-rounded-base: theme(borderRadius.sm);
+}
+
+.label > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.dark label:not(.unstyled) span:first-of-type:not(.unstyled):is(:not(.input-chip *)) {
+	color: rgb(var(--color-surface-200));
+}
+
+label:not(.unstyled) span:first-of-type:not(.unstyled):is(:not(.input-chip *)) {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: rgb(var(--color-surface-700));
+}
