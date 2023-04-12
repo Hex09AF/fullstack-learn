@@ -1,0 +1,4 @@
+{
+	"eslint.validate": ["html", "javascript", "typescript", "svelte"],
+	"typescript.tsdk": "node_modules/typescript/lib"
+}

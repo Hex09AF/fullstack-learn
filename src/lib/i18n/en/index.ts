@@ -8,14 +8,14 @@ const en: BaseTranslation = {
 	onboarding: {
 		labels: {
 			username: 'Username',
-			uploadFile: 'Upload File'
+			uploadFile: 'Upload File',
 		},
 		messages: {
 			main: "Welcome to listd! Let's setup your profile.",
 			avatar: 'Upload your avatar.',
-			final: "That's all! Let's get started!"
-		}
-	}
+			final: "That's all! Let's get started!",
+		},
+	},
 };
 
 export default en;

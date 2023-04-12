@@ -3,7 +3,7 @@ import en from '../en';
 
 const de: Translation = {
 	...(en as Translation),
-	message: 'Hallo Welt'
+	message: 'Hallo Welt',
 };
 
 export default de;
