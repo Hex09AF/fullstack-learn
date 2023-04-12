@@ -12,8 +12,10 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
-		"lint": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
-		"format": "prettier --plugin-search-dir . --write .",
+		"lint": "eslint --ext .js,.cjs,.ts,.svelte .",
+		"format": "prettier --plugin-search-dir . --check .",
+		"lint:fix": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
+		"format:fix": "prettier --plugin-search-dir . --write .",
 		"prisma-migrate": "npx prisma migrate dev --name init",
 		"typesafe-i18n": "typesafe-i18n"
 	},
