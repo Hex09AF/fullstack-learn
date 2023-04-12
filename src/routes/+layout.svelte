@@ -1,8 +1,12 @@
-<script>
+<script lang="ts">
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
+	import { setLocale } from '$lib/i18n/i18n-svelte.js';
+	import type { LayoutData } from './$types.js';
+	export let data: LayoutData;
+	setLocale(data.locale);
 </script>
 
 <AppShell>
