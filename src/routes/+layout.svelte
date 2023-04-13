@@ -4,6 +4,7 @@
 	import '../app.postcss';
 	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
+	import { signOut } from '@auth/sveltekit/client';
 	import type { LayoutData } from './$types.js';
 
 	export let data: LayoutData;
@@ -16,6 +17,9 @@
 			<svelte:fragment slot="lead"><a href="/">listd.tv</a></svelte:fragment>
 			<svelte:fragment slot="trail">
 				<LightSwitch />
+				{#if data.session?.user}
+					<button class="btn bg-primary-500" on:click={() => signOut()}>Sign Out</button>
+				{/if}
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
