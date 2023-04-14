@@ -2,13 +2,15 @@
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
-	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
+	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
+	import { storePopup, AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
-	import { signOut } from '@auth/sveltekit/client';
+	import NavTrail from './NavTrail.svelte';
 	import type { LayoutData } from './$types.js';
 
 	export let data: LayoutData;
 	setLocale(data.locale);
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
 
 <AppShell>
@@ -16,10 +18,7 @@
 		<AppBar>
 			<svelte:fragment slot="lead"><a href="/">listd.tv</a></svelte:fragment>
 			<svelte:fragment slot="trail">
-				<LightSwitch />
-				{#if data.session?.user}
-					<button class="btn bg-primary-500" on:click={() => signOut()}>Sign Out</button>
-				{/if}
+				<NavTrail />
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
