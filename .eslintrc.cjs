@@ -53,7 +53,6 @@ module.exports = {
 		'import/extensions': 0,
 		'import/no-extraneous-dependencies': 0,
 		'import/no-mutable-exports': 0,
-		'import/no-named-as-default': 0,
 		'import/no-duplicates': 0,
 		'import-no-duplicates-prefix-resolved-path/no-duplicates': [
 			'error',
