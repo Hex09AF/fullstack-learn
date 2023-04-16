@@ -7,33 +7,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id            String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  name          String?
+  email         String?       @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  lists         List[]
+  settings      UserSettings?
+}
+
 enum ColorScheme {
   System
   Dark
   Light
 }
 
-model User {
-  id            String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  name          String?
-  email         String?        @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  lists         List[]
-  UserSettings  UserSettings[]
-}
-
 model UserSettings {
   id          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   onboarded   Boolean     @default(false)
-  colorSchema ColorScheme @default(System)
-  user        User        @relation(fields: [userId], references: [id])
+  colorScheme ColorScheme @default(System)
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String      @unique @db.Uuid
-  locale      Locale      @relation(fields: [localeId], references: [id])
+  locale      Locale      @relation(fields: [localeId], references: [id], onDelete: Cascade)
   localeId    String      @db.VarChar(15)
 }
 
