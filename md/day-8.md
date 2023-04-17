@@ -2,6 +2,9 @@
 
 1. Fix ([#58](https://github.com/CodingGarden/listd/issues/58))
 
+2. Prepare playwright test
+
 Note:
 
--
+- Remember to install the test browser platform first `npx playwright install`
+
