@@ -2,15 +2,23 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { signOut } from '@auth/sveltekit/client';
-	import { LightSwitch, popup, type PopupSettings } from '@skeletonlabs/skeleton';
+	import { LightSwitch, ProgressRadial, popup, type PopupSettings } from '@skeletonlabs/skeleton';
+	import { LL } from '$lib/i18n/i18n-svelte';
 
-	const userSignout = () => signOut();
 	const goSettings = () => goto('/settings');
 	const goUserProfile = () => goto('/me');
 	const popupCombobox: PopupSettings = {
 		event: 'focus-click',
 		target: 'combobox',
 		placement: 'bottom',
+	};
+
+	let loading = false;
+
+	const signOutClick = (event: { currentTarget: EventTarget & HTMLButtonElement }) => {
+		event.currentTarget.disabled = true;
+		loading = true;
+		signOut();
 	};
 </script>
 
@@ -64,7 +72,13 @@
 				<button on:click={goSettings} class="option w-full">Settings</button>
 			</li>
 			<li class="my-2">
-				<button on:click={userSignout} class="option w-full">Logout</button>
+				<button on:click|once={signOutClick} class="btn variant-filled-primary">
+					{#if loading}
+						{$LL.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
+					{:else}
+						{$LL.logOut()}
+					{/if}
+				</button>
 			</li>
 		{/if}
 	</ul>
