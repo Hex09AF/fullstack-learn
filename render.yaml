@@ -19,6 +19,4 @@ services:
 
 databases:
   - name: db-prod
-    databaseName: listd
-    ipAllowList: []
-    postgresMajorVersion: 15 # optional (defaults to the latest available, supported versions are 11, 12, 13, 14 and 15)
+
