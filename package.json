@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"prepare": "husky install",
+		"prepare": "svelte-kit sync && husky install",
 		"dev": "npm-run-all --parallel vite typesafe-i18n",
 		"vite": "vite dev --open",
 		"build": "vite build",
