@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: fe-prod
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: node build/index.js
+    autoDeploy: false
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: db-prod
+          property: connectionString
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: AUTH_SECRET
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+
+databases:
+  - name: db-prod
+    databaseName: listd
+    ipAllowList: []
+    postgresMajorVersion: 15 # optional (defaults to the latest available, supported versions are 11, 12, 13, 14 and 15)
