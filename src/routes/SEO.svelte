@@ -2,15 +2,16 @@
 	import { seo } from '$lib/stores/SeoStore';
 	import { onMount } from 'svelte';
 
-	export const { title } = $seo;
-	export const { description } = $seo;
+	export let title: string;
+	export let description: string;
+
 	const loadSeo = () => {
 		seo.set({
 			title,
 			description,
 		});
 	};
-	loadSeo();
+
 	onMount(() => {
 		loadSeo();
 	});

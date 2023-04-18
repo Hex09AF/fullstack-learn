@@ -1,3 +1,4 @@
 module.exports = {
-	'**/*.{js,ts,cjs,svelte,tsx}': [() => 'npm run typecheck', 'npm run lint'],
+	'*.{js,ts,svelte}': ['svelte-check', 'npm run lint'],
+	'*.cjs': 'npm run lint',
 };
