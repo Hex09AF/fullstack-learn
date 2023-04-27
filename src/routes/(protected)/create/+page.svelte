@@ -1,22 +1,22 @@
 <script lang="ts">
+	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
 	import Seo from '$/routes/SEO.svelte';
 	import { browser } from '$app/environment';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import type { youtube_v3 } from '@googleapis/youtube';
 	import ChannelCard from './ChannelCard.svelte';
 	import ChannelCardActions from './ChannelCardActions.svelte';
-	import ChannelSearch from './ChannelSelector.svelte';
+	import ChannelSearch from './ChannelSearch.svelte';
 
 	export let data;
 	export let form;
 
-	let channels: youtube_v3.Schema$Channel[] = [];
+	let channels: YouTubeChannelMetaAPIResponse[] = [];
 
 	$: channelIds = channels.reduce((byId, channel, index) => {
-		if (channel.id) {
-			byId.set(channel.id, index);
+		if (channel.originId) {
+			byId.set(channel.originId, index);
 		}
 		return byId;
 	}, new Map<string, number>());
@@ -32,7 +32,12 @@
 </script>
 
 <Seo title="Create a List" description="Create a List" />
-<form class="mt-4 flex flex-col gap-4" action="/create?/create" method="post" use:enhance>
+<form
+	class="mx-auto mt-4 flex max-w-lg flex-col gap-4"
+	action="/create?/create"
+	method="post"
+	use:enhance
+>
 	{#if form?.error}
 		<aside class="alert variant-filled-error">
 			<div class="alert-message">

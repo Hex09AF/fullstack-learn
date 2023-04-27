@@ -117,11 +117,30 @@ model ListItem {
 }
 
 model ListItemMeta {
-  id        String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name      String
-  originId  String
-  type      ListItemType
-  listItem  ListItem[]
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
+  id                  String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name                String
+  originId            String
+  imageUrl            String
+  type                ListItemType
+  youtubeMeta         YouTubeMeta? @relation(fields: [youTubeMetaOriginId], references: [originId])
+  listItem            ListItem[]
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  youTubeMetaOriginId String?
+
+  @@unique([originId, type])
+}
+
+model YouTubeMeta {
+  originId        String         @unique
+  name            String
+  description     String
+  subscriberCount Int
+  avatarUrl       String
+  bannerUrl       String?
+  customUrl       String
+  isVerified      Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  ListItemMeta    ListItemMeta[]
 }
