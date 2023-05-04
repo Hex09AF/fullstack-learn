@@ -29,6 +29,7 @@
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
 		"@tailwindcss/forms": "^0.5.3",
+		"@types/luxon": "^3.3.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.7",
@@ -69,6 +70,8 @@
 		"@googleapis/youtube": "^9.0.0",
 		"@next-auth/prisma-adapter": "^1.0.5",
 		"@prisma/client": "^4.12.0",
-		"eslint-config-airbnb-typescript": "^17.0.0"
+		"eslint-config-airbnb-typescript": "^17.0.0",
+		"luxon": "^3.3.0",
+		"redis": "^4.6.6"
 	}
 }
